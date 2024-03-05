@@ -22,18 +22,22 @@ print(df2)
 # 將 DataFrame 寫入 CSV 檔案
 df2.to_csv("C:/Users/USER/Desktop/oil.csv", index=False)
 
-# df2 只保留前2個欄位的資料
-df2 = df2.iloc[:, :2]
+# df2 只保留前5個欄位的資料
+df2 = df2.iloc[:, :5]
 
-# 去除第二欄值是NaN的資料
-df2 = df2.dropna(subset=[df2.columns[1]])
+# 去除值是NaN的資料
+df2 = df2.dropna()
 
 # 把第一欄的資料型態 轉成 datetime
 df2[df2.columns[0]] = pd.to_datetime(df2[df2.columns[0]])
 
 print (df2)
 
-# 使用 matplotlib 繪製折線圖 , x 軸是日期 , y 軸是油價
+# 使用 matplotlib x,y 散佈圖 , x 軸是日期 , 後面四個欄位是 油價 ，分別是 92無鉛汽油,95無鉛汽油,98無鉛汽油,超級柴油 
 import matplotlib.pyplot as plt
-plt.plot(df2[df2.columns[0]], df2[df2.columns[1]])
+plt.plot(df2[df2.columns[0]], df2[df2.columns[1]], label='92無鉛汽油')
+plt.plot(df2[df2.columns[0]], df2[df2.columns[2]], label='95無鉛汽油')
+plt.plot(df2[df2.columns[0]], df2[df2.columns[3]], label='98無鉛汽油')
+plt.plot(df2[df2.columns[0]], df2[df2.columns[4]], label='超級柴油')
+plt.legend(loc='upper left')
 plt.show()
