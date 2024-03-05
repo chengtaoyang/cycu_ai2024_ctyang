@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+from matplotlib.font_manager import FontProperties
+from matplotlib.font_manager import FontProperties
 
 # 獲取網頁內容
 response = requests.get('https://vipmbr.cpc.com.tw/mbwebs/ShowHistoryPrice_oil.aspx')
@@ -33,11 +35,19 @@ df2[df2.columns[0]] = pd.to_datetime(df2[df2.columns[0]])
 
 print (df2)
 
-# 使用 matplotlib x,y 散佈圖 , x 軸是日期 , 後面四個欄位是 油價 ，分別是 92無鉛汽油,95無鉛汽油,98無鉛汽油,超級柴油 
+# 使用 matplotlib x,y 折線圖 , x 軸是日期 , 後面四個欄位是 油價 ，分別是 92無鉛汽油,95無鉛汽油,98無鉛汽油,超級柴油 
 import matplotlib.pyplot as plt
+# 設定中文字型
+plt.rcParams['font.sans-serif'] = ['Microsoft JhengHei']
+plt.rcParams['axes.unicode_minus'] = False
+# 設定圖片大小
+plt.figure(figsize=(10, 6))
+# 繪製折線圖
 plt.plot(df2[df2.columns[0]], df2[df2.columns[1]], label='92無鉛汽油')
 plt.plot(df2[df2.columns[0]], df2[df2.columns[2]], label='95無鉛汽油')
 plt.plot(df2[df2.columns[0]], df2[df2.columns[3]], label='98無鉛汽油')
 plt.plot(df2[df2.columns[0]], df2[df2.columns[4]], label='超級柴油')
-plt.legend(loc='upper left')
+# 設定圖例
+plt.legend()
+# 顯示圖片
 plt.show()
