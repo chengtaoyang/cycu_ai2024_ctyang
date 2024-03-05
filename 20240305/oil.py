@@ -44,7 +44,7 @@ import matplotlib.pyplot as plt
 plt.rcParams['font.sans-serif'] = ['Microsoft JhengHei']
 plt.rcParams['axes.unicode_minus'] = False
 # 設定圖片大小
-plt.figure(figsize=(60, 6))
+plt.figure(figsize=(60, 10))
 # 繪製折線圖
 plt.plot(df2[df2.columns[0]], df2[df2.columns[1]], label='92無鉛汽油')
 plt.plot(df2[df2.columns[0]], df2[df2.columns[2]], label='95無鉛汽油')
