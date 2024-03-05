@@ -1,4 +1,3 @@
-print("Hello World!")
 
 import requests
 import feedparser
