@@ -25,7 +25,7 @@ df2 = pd.read_html(str(tables[1]))[0]
 df2 = pd.concat([df3, df2])
 
 # 將 DataFrame 寫入 CSV 檔案
-df2.to_csv("C:/Users/USER/Desktop/oil.csv", index=False)
+df2.to_csv("/workspaces/cycu_ai2024_ctyang/oil.csv", index=False)
 
 # df2 只保留前5個欄位的資料
 df2 = df2.iloc[:, :5]
@@ -58,4 +58,4 @@ plt.xticks(df2[df2.columns[0]][::30])
 # 設定圖表標題
 # 顯示圖片
 plt.show()
-plt.savefig("C:/Users/USER/Desktop/oil.png")
+plt.savefig("/workspaces/cycu_ai2024_ctyang/oil.png")
