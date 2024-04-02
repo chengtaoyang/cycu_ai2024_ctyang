@@ -20,10 +20,10 @@ for i in range(0,24):
         print(urletc)
         #get the data from the url
 
-        response = requests.get(urletc)
-        response.encoding = 'big5'
-        # save the data to a file
-        with open( os.path.join('20240326', filename), 'w') as f:
-            f.write(response.text)
+        # response = requests.get(urletc)
+        # response.encoding = 'big5'
+        # # save the data to a file
+        # with open( os.path.join('20240326', filename), 'w') as f:
+        #     f.write(response.text)
         
-        response.close()
+        # response.close()
