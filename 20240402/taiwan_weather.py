@@ -1,7 +1,6 @@
 # crawler from rss of central weather agency
 
 import requests
-import xml.etree.ElementTree as ET
 import json
 import pandas as pd
 import numpy as np
@@ -25,5 +24,5 @@ for num in range(1, 23):
     #print all titles
     for entry in feed.entries:
         print(entry.title)
-        print(entry.summary)
+
     print("=======================================")
