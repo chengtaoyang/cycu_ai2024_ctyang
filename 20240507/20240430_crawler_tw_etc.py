@@ -5,6 +5,8 @@ import datetime
 import requests
 import pandas as pd
 
+
+
 # M03A : TimeInterval、GantryID、Direction、VehicleType、交通量
 # M04A : TimeInterval、GantryFrom、GantryTo、VehicleType、TravelTime、交通量
 # M05A : TimeInterval、GantryFrom、GantryTo、VehicleType、SpaceMeanSpeed、交通量
