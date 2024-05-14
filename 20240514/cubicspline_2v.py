@@ -67,3 +67,4 @@ plt.tight_layout()
 # 顯示圖形
 plt.savefig('cubicspline_2v.png')
 print(data)
+print(data)
