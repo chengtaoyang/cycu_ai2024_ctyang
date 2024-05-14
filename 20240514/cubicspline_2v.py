@@ -31,8 +31,8 @@ print (data)
 
 # 對時間和里程數據進行網格化
 # 假設 x (時間) 和 y (里程) 已經是規則的網格數據
-x = np.linspace(data[:, 0].min(), data[:, 0].max(), num=50)  # 調整 num 以匹配數據點的密度
-y = np.linspace(data[:, 1].min(), data[:, 1].max(), num=50)
+x = np.linspace(data[:, 0].min(), data[:, 0].max(), num=200)  # 調整 num 以匹配數據點的密度
+y = np.linspace(data[:, 1].min(), data[:, 1].max(), num=200)
 x, y = np.meshgrid(x, y)
 
 # 插值找到每個 (x, y) 點對應的 z (車流量)
