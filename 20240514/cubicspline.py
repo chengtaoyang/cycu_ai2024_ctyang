@@ -56,6 +56,8 @@ y = dataframe1['tv31']
 cs = CubicSpline(x, y)
 
 new_x = np.linspace(x.min(), x.max(), 500)
+
+print (new_x )
 new_y = cs(new_x)
 
 # # 畫出擬合後的曲線
