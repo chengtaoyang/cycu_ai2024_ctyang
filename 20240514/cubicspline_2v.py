@@ -46,7 +46,7 @@ ax = fig.add_subplot(121, projection='3d')
 surf = ax.plot_surface(x, y, z, cmap='viridis')
 
 # 添加顏色條
-fig.colorbar(surf)
+#fig.colorbar(surf)
 
 # 設置坐標軸標籤
 ax.set_xlabel('Time')
@@ -63,6 +63,7 @@ ax1.set_ylabel('Mileage')
 ax1.set_zlabel('Traffic Volume')
 ax1.view_init(elev=45, azim=60)
 
+plt.tight_layout()
 # 顯示圖形
 plt.savefig('cubicspline_2v.png')
 print(data)
