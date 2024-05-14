@@ -37,6 +37,9 @@ dataframe1['to_millage'] = dataframe1['GantryTo'].str[3:7]
 dataframe1['to_direction'] = dataframe1['GantryTo'].str[7]
 
 
+#write the dataframe to csv file
+dataframe1.to_csv('TDCS_M05A_20240429_cub.csv', index=False)
+
 #filter the data with timeinterval = 0.0 , highwaynumber = '01F' and direction = 'S'
 dataframe1 = dataframe1[(dataframe1['TimeInterval'] == 0.0) & (dataframe1['highwaynumber'] == '01F') & (dataframe1['direction'] == 'S')]
 
@@ -45,7 +48,9 @@ dataframe1 = dataframe1[(dataframe1['to_highwaynumber'] == '01F') & (dataframe1[
 
 #convert the millage to integer
 dataframe1['millage'] = dataframe1['millage'].astype(int)
+
 print(dataframe1.head(), dataframe1.tail(), dataframe1.shape)
+
 
 # sort the dataframe by millage
 dataframe1 = dataframe1.sort_values(by='millage')
@@ -57,7 +62,7 @@ cs = CubicSpline(x, y)
 
 new_x = np.linspace(x.min(), x.max(), 500)
 
-print (new_x )
+
 new_y = cs(new_x)
 
 # # 畫出擬合後的曲線
