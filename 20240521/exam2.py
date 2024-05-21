@@ -1,6 +1,6 @@
 import datetime
 
-# 1 
+# 第1題
 # 期中考作業 寫一個爬蟲程式可以下載 2024 1月1日 到4月30日的每日資料 etc 資料
 #2024 1 月 1 日 的檔案 是一個壓縮檔案 
 #https://tisvcloud.freeway.gov.tw/history/TDCS/M05A/M05A_20240101.tar.gz
@@ -16,9 +16,13 @@ import datetime
 
 
 #2 動態網頁地圖
+#  期中考作業， 使用動態地圖繪製
+#  每5分鐘為單位 依據行車速度模仿 高速公路局行車動態繪製 4/29 的 車速變化
 
 
 #3 特徵化時間與空間資訊
+#  時間，解構成  星期(1-7), 上班日, 假日, 
+#  門架 解構成 里程, 高速公路位址, 與方向
 
 import urllib.request
 import requests
