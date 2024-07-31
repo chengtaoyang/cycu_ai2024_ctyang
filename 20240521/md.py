@@ -62,8 +62,8 @@ def url_exists(url):
     response = requests.head(url)
     return response.status_code == 200
 
-start_date = datetime.date(2024, 4, 20)
-end_date = datetime.date(2024, 4, 15)
+start_date = datetime.date(2024, 7, 10)
+end_date = datetime.date(2024, 7, 15)
 
 current_date = start_date
 while current_date <= end_date:

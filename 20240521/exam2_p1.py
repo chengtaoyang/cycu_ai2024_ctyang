@@ -43,27 +43,33 @@ def download_file(url, filename):
     with open(filename, 'wb') as file:
         file.write(response.content)
 
-start_date = datetime.date(2024, 4, 17)
-end_date = datetime.date(2024, 4, 17)
 
-current_date = start_date
-while current_date <= end_date:
-    file_date = current_date.strftime("%Y%m%d")
-    tar_file_url = f"https://tisvcloud.freeway.gov.tw/history/TDCS/M05A/M05A_{file_date}.tar.gz"
-    tar_file_name = f"M05A_{file_date}.tar.gz"
-
-    print (tar_file_name, tar_file_url)
+def download_M05A(start_date = datetime.date(2024, 6, 10), end_date = datetime.date(2024, 6, 17)):
     
-    if url_exists(tar_file_url):
-        #download tar file
-        download_file(tar_file_url, tar_file_name)
+    current_date = start_date
+    while current_date <= end_date:
+        file_date = current_date.strftime("%Y%m%d")
+        tar_file_url = f"https://tisvcloud.freeway.gov.tw/history/TDCS/M05A/M05A_{file_date}.tar.gz"
+        tar_file_name = f"M05A_{file_date}.tar.gz"
 
-    else:
-        for hour in range(24):
-            for minute in range(0, 60, 5):
-                file_url = f"https://tisvcloud.freeway.gov.tw/history/TDCS/M05A/{file_date}/{str(hour).zfill(2)}/TDCS_M05A_{file_date}_{str(hour).zfill(2)}{str(minute).zfill(2)}00.csv"
-                if url_exists(file_url):
-                    file_name = f"M05A_{file_date}_{str(hour).zfill(2)}{str(minute).zfill(2)}00.csv"
-                    download_file(file_url, file_name)
+        print (tar_file_name, tar_file_url)
+        
+        if url_exists(tar_file_url):
+            #download tar file
+            download_file(tar_file_url, tar_file_name)
+
+        else:
+            for hour in range(24):
+                for minute in range(0, 60, 5):
+                    file_url = f"https://tisvcloud.freeway.gov.tw/history/TDCS/M05A/{file_date}/{str(hour).zfill(2)}/TDCS_M05A_{file_date}_{str(hour).zfill(2)}{str(minute).zfill(2)}00.csv"
+                    if url_exists(file_url):
+                        file_name = f"M05A_{file_date}_{str(hour).zfill(2)}{str(minute).zfill(2)}00.csv"
+                        download_file(file_url, file_name)
+        
+        current_date += datetime.timedelta(days=1)
+
+if __name__ == '__main__':
+    download_M05A()
+
     
-    current_date += datetime.timedelta(days=1)
+    #download_M05A(datetime.date(2024, 7, 10), datetime
