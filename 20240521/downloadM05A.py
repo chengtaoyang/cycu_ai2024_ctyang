@@ -43,10 +43,46 @@ def download_file(url, filename):
     with open(filename, 'wb') as file:
         file.write(response.content)
 
+class M05A:
+    def __init__(self, date):
+        self.date = date
+
+        self.file_direrctory = "data"
+
+        self.file_date = date.strftime("%Y%m%d")
+
+        self.file_name  = f"M05A_{self.file_date}.tar.gz"
+
+        self.file_url   = f"https://tisvcloud.freeway.gov.tw/history/TDCS/M05A/{self.file_name}"
+
+        self.targz_url_exists = url_exists(self.file_url)
+
+        self.csv_filelist = []
+
+        if self.targz_url_exists == False:
+            for hour in range(24):
+                for minute in range(0, 60, 5):
+                    csv_file_name = f"TDSC_M05A_{self.file_date}_{str(hour).zfill(2)}{str(minute).zfill(2)}00.csv"
+                    file_url = f"https://tisvcloud.freeway.gov.tw/history/TDCS/M05A/{self.file_date}/{str(hour).zfill(2)}/{csv_file_name}"
+                    if url_exists(file_url):
+                        self.csv_filelist.append([file_url,csv_file_name])
+
+        self.csv_url_exists = ( len(self.csv_filelist) == 288)
+
+class M05A_data:
+    def __init__(self, start_date = datetime.date(2024, 6, 10), end_date = datetime.date(2024, 6, 17)  ) :
+        current_date = start_date
+
+        self.M05A_list = []
+        while current_date <= end_date:
+            self.M05A_list.append(M05A(current_date))
+            current_date += datetime.timedelta(days=1)
 
 def download_M05A(start_date = datetime.date(2024, 6, 10), end_date = datetime.date(2024, 6, 17)):
     
     current_date = start_date
+    file_direrctory = "data"
+
     while current_date <= end_date:
         file_date = current_date.strftime("%Y%m%d")
         tar_file_url = f"https://tisvcloud.freeway.gov.tw/history/TDCS/M05A/M05A_{file_date}.tar.gz"
@@ -69,7 +105,14 @@ def download_M05A(start_date = datetime.date(2024, 6, 10), end_date = datetime.d
         current_date += datetime.timedelta(days=1)
 
 if __name__ == '__main__':
-    download_M05A()
+
+    beg = datetime.date(2024, 7, 10) 
+    end = datetime.date(2024, 7, 17)
+
+    abc = M05A_data(beg, end)
+
+    for i in abc.M05A_list:
+        print (i.date, i.targz_url_exists, i.csv_url_exists, len(i.csv_filelist))
 
     
     #download_M05A(datetime.date(2024, 7, 10), datetime
