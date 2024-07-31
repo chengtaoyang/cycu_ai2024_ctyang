@@ -23,7 +23,7 @@ import tarfile
 
 def url_exists(url):
     try:
-        response = requests.get(url)
+        response = requests.head(url, timeout=3)
         return response.status_code == 200
     except requests.exceptions.RequestException as err:
         print ("OOps: Something Else Happened",err)
@@ -106,7 +106,7 @@ def download_M05A(start_date = datetime.date(2024, 6, 10), end_date = datetime.d
 
 if __name__ == '__main__':
 
-    beg = datetime.date(2024, 7, 10) 
+    beg = datetime.date(2024, 7, 1) 
     end = datetime.date(2024, 7, 17)
 
     abc = M05A_data(beg, end)
